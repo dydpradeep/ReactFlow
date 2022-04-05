@@ -1,0 +1,730 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Sir’s NotePad</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="34c16652-f1d7-49a3-8497-a2a66b62da43" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">✅</span></div><h1 class="page-title">Sir’s NotePad</h1></header><div class="page-body"><p id="da09d079-781d-42d7-b2ea-6a78cf240c09" class=""><strong>program</strong>  - sequence of commands
+web-based programming</p><ol type="1" id="fa9c808b-a914-473f-8866-ff4798c391f9" class="numbered-list" start="1"><li>1 tier - local system e.g desktop application</li></ol><ol type="1" id="b1a6b472-4e44-4082-afb2-c85ab8ffbf41" class="numbered-list" start="2"><li>2 tier - (client / server application)
+client - want to access resources and make a request
+server - handle all the client request and provide data</li></ol><ol type="1" id="1a54bfe8-dc9a-4bdd-8f85-f6c7c7f93e08" class="numbered-list" start="3"><li>3 tier &amp; multi tier
+sony bravia tv(server)- mfg
+amazon- seller(intermediate) , business logic, scheme, payment
+user (clinet) - end user</li></ol><ol type="1" id="19619ca2-24cc-4575-a1ee-1e9d79ed9900" class="numbered-list" start="4"><li>e-com (multi tier)
+many people are included</li></ol><p id="0804ca6b-e5d7-468a-a677-eec454008e37" class="">portability
+network
+operating system ( winodws, unix, lunix, ios  ..)
+device ( mobile, desktop, tablet,lappop)
+application (text processing ) - word, word perfect, open office, smart office, lotus notes,write )</p><p id="dba4e2c5-65c1-482c-a1f9-840dca46b04b" class="">common  part - html ( browser - convert html lang into representable format )
+web page - html- hyper text markup language</p><p id="bb9f6fe1-996d-449a-9ac3-3fe5aafe61fa" class="">webpage</p><ol type="1" id="104c3b6a-6920-4adf-a0e8-87595d335728" class="numbered-list" start="1"><li>static (cv) - fixed content</li></ol><ol type="1" id="0289cab8-8d28-41c0-8918-8cb3f13863b5" class="numbered-list" start="2"><li>dynamic - amazon, colour, promotions, discount, trafic generated, attracted, graphics, animation, style sheet, common look &amp; feel, commonness, secirty
+*full stack
+frontend - UI, reactjs,
+backend - node js, java, python, java scipt
+database - orcle, sql server, mango db (actual data store)
+network-
+structrual
+version control system - github</li></ol><p id="01b718f9-d374-4abf-8297-2381e5eb4c2e" class="">react js - java script ( java lang- applet, servlet, application,  java script- html   )</p><p id="c9efe5c3-9180-4531-b28d-74d66fcd6fce" class="">IDE - integrated development environment (e.g  notepad++, vscode, eclipse, notepad)</p><ul id="477c600d-e112-4844-b379-82601b41f373" class="bulleted-list"><li style="list-style-type:disc">various colour combination ( component can be recognized easily )</li></ul><ul id="52e237e6-3ade-41d6-abac-0505e2189e8b" class="bulleted-list"><li style="list-style-type:disc">proper formatting</li></ul><ul id="e6459966-67f3-431e-a71e-76c8ce6842a2" class="bulleted-list"><li style="list-style-type:disc">catch / represent error easily
+{ web page having different component like graphics, text, graph, data analytics, textual, data processeing, database, designs, presentation, static, dynamic, date&amp; time, codepath, reports }</li></ul><p id="72094556-829f-4fc1-bba8-64743d26a9d1" class="">react js = html(base)  + java script ( functionality ) + css (designing, style) + python component + java component + custom components etc )</p><h1 id="bdbf660b-469d-4bd8-beba-80bb10f21c04" class="">electrical problem</h1><p id="d3508711-79c0-426b-a907-b50b63952ad9" class="">a) employe electrician
+b) render service for that task</p><p id="897856ba-2514-4fe9-8bfa-eece188af807" class="">object - instance of class
+class -structure ( data + method)
+class bird - {feather, lay egg, can fly}
+object e.g peacock, sparow,ostrich
+DOM
+backup  (full- whole data(1 tb) copy 1+1+1=3tb  incremental- only changed files 1+0.2tb+0.3tb =1.5 tb)
+( vdom -, pdom- full print, full refersh )
+address1 (houseno, society, area, city, state)
+address2 (houseno, society, area, city, state)
+address3 (houseno, society, area, city, state)</p><ul id="bce60ac0-88ab-4bb6-b991-ec044538957e" class="bulleted-list"><li style="list-style-type:disc">SDLC
+requirement analysis
+prototyping
+coding
+testing
+integrating
+deploying (Build - whole executable code install to client computer )
+implement -apply get feed back &amp; correct if error found
+maintenance - future update
+engineering - ongoing terms no end, endless, no stopage, continuous development</li></ul><ul id="3da3cf72-a783-47ec-a567-d1293e8c3100" class="bulleted-list"><li style="list-style-type:disc"></li></ul><p id="9fa13bfb-2c2a-47b5-ae6c-f885d662b3c4" class="">benefits of react js</p><ul id="1696267e-3f30-4a3f-9d7d-e22684f3d43f" class="bulleted-list"><li style="list-style-type:disc">react js = html(base) + java script ( functionality ) + css (designing, style) + python component + java component + custom components etc )</li></ul><ul id="e1999118-8605-4b84-864d-868363b9d70e" class="bulleted-list"><li style="list-style-type:disc">spa - single page application</li></ul><ul id="230c6430-9e68-438d-ae87-cc0e19e0e493" class="bulleted-list"><li style="list-style-type:disc">VDOM - virtual Document object model vs physical</li></ul><ul id="abe08560-7952-48fe-904d-59ee247013b6" class="bulleted-list"><li style="list-style-type:disc">variable (part of memory which hold data) get replaced by state</li></ul><ul id="1e3b8e34-163d-46f5-9ef7-ab61abf295ce" class="bulleted-list"><li style="list-style-type:disc">jsx (java script xml) - html + java script</li></ul><ul id="2a577dc5-67a2-4803-a65b-fd1b53625012" class="bulleted-list"><li style="list-style-type:disc">argument in one way</li></ul><ul id="61ced63a-2b86-4408-932e-8d59ba71b4b1" class="bulleted-list"><li style="list-style-type:disc">c++ (procedure oriented ) java ( object oriented lang)
+(open data, no security data under cell, only member can access data,security )
+share data - pass as argument)
+main()
+{</li></ul><ol type="1" id="020ec6cb-e0d4-4d7d-a4e9-629d073b7d78" class="numbered-list" start="1"><li>a=10,b=12</li></ol><ol type="1" id="f3587593-6249-465d-ac66-e36c442796a0" class="numbered-list" start="2"><li>swap(a,b)</li></ol><ol type="1" id="135bd7f7-fc62-4f80-987a-d6a448dda367" class="numbered-list" start="3"><li>print a,b; 1. a=10 , b=12
+}</li></ol><p id="6dda2feb-3049-4c63-99e9-d8fdc96114fc" class="">3swap( int a, int b) // xerox copy of argument ,call by value, refernce
+{
+t=a;
+a=b;
+b=t;
+8. print (a,b)//2. 12,10
+}//
+a. 12,10
+b. 12.10 10,12
+a,b //
+Q. what max variable can be returned by function A. one  B.many</p><p id="501b4b35-da9e-427e-909c-e223094e7747" class="">npm start
+npm run build
+npm test
+npm run eject</p><p id="9edc56c9-1118-4a12-937f-965462d11b3a" class="">devops - development &amp; operations
+---           --       -
+programmer      operators
+system    develop      this community
+new property     update</p><p id="ea7d9ae5-3244-43c5-9271-b0d686731345" class="">GIT /GIT HUB - version control system</p><ol type="1" id="46259f97-a509-4af5-b4a8-d7727d3c4c69" class="numbered-list" start="1"><li>package.json - brain of a project, version setting, details about package install</li></ol><ol type="1" id="0bcfd954-8d52-4178-aa2b-389562108887" class="numbered-list" start="2"><li>package-lock.json - will maintain backup of package.json file, version control system, hash code, dependency</li></ol><ol type="1" id="ddb2d90b-53bb-4171-9a41-089b2b0d8287" class="numbered-list" start="3"><li>gitignore -unwanted part not to be stored in git</li></ol><ol type="1" id="e8e16848-dd2d-4884-815c-29005b11be29" class="numbered-list" start="4"><li>node module - it contains library of standard node modules \</li></ol><ol type="1" id="e754c06e-508b-4094-8f41-38326566e83e" class="numbered-list" start="5"><li>app.test.js - create for testing set or test cases</li></ol><ol type="1" id="767dd67c-f7d9-4a5c-9564-52e9cabbce77" class="numbered-list" start="6"><li>index.js - entry point of a system our 25% code will be done in this</li></ol><ol type="1" id="3642e716-9dae-4a1c-811d-af1213ca3ebe" class="numbered-list" start="7"><li>manifest - it is meta file which stores icone, theme etc</li></ol><ol type="1" id="792190c4-6cad-4573-98ad-d86af31f3315" class="numbered-list" start="8"><li>robot - will maintain google search of a project</li></ol><ol type="1" id="53a55b1c-9f9a-4768-8c0e-3e309d57750d" class="numbered-list" start="9"><li>public - html type part</li></ol><ol type="1" id="1cc79a32-0777-43df-9940-e3c6b708b340" class="numbered-list" start="10"><li>app.js - main java script file 60% code will be done in this</li></ol><ol type="1" id="8c3624d5-475f-4539-a8f4-b6b10ef441bd" class="numbered-list" start="11"><li>built - store and manage builr</li></ol></div></article></body></html>
